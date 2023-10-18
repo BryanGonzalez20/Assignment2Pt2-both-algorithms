@@ -41,6 +41,53 @@ int main() {
 
 
 
+    // Robots information:
+
+    Robot robot;
+    Robot robot2;
+    robot.init();
+    robot2.init2();
+
+    int robotX = 0;
+    int robotY = 0;
+    int robotX2 = 0;
+    int robotY2 = 0;
+
+    int numMovesRobot1 = 0;
+    int numMovesRobot2 = 0;
+
+    int numCoinsRobot1 = 0;
+    int numCoinsRobot2 = 0;
+
+    int numCoins = 0;
+
+
+    int currentRobotTurn = 1;
+    while (numCoinsRobot1 + numCoinsRobot2 < 3){
+
+        if(currentRobotTurn == 1){
+            // CODE FOR ROBOT 1 MOVES
+
+
+        }
+        else {
+            // CODE FOR ROBOT 2 TURN
+
+
+        }
+
+
+        // Switch turns
+        currentRobotTurn = (currentRobotTurn == 1) ? 2 : 1;
+
+
+    }
+
+
+
+
+
+
 
 
 
@@ -48,15 +95,12 @@ int main() {
     // ROBOT 1
 
     // Initialize robot object
-    Robot robot;
-    robot.init();
 
-    int numMovesRobot1 = 0;
-    int numCoins = 0;
+
+
 
     // Since we cant access the robot's location, we must manually update with these variables
-    int robotX = 0;
-    int robotY = 0;
+
 
 
     robot.print();
@@ -174,13 +218,9 @@ int main() {
 
     // ROBOT 2
 
-    // Initialize robot 2
-    Robot robot2;
-    robot2.init2(); // Make sure this sets the initial position as (0, 0) and facing south
 
-    int numMovesRobot2 = 0;
-    int robotX2 = 0;
-    int robotY2 = 0;
+
+
 
     robot2.print();
     // COIN CHECK: check if the current robot location is a coin location (specifically 0,0)
