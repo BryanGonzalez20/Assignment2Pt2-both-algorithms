@@ -14,9 +14,6 @@ PlayRobot::PlayRobot():
 
 void PlayRobot::playRobot1(Point coinLocationArray[]){
 
-    robot.init();
-    robot.print();
-
 
     // COIN CHECK: check if the current robot location is a coin location (specifically 0,0)
     for (int i = 0; i < 3; i++) {
@@ -180,8 +177,8 @@ void PlayRobot::playRobot1(Point coinLocationArray[]){
 void PlayRobot::playRobot2(Point coinLocationArray[]){
 
 
-    robot2.init2();
-    robot2.print();
+    // ROBOT 2 CODE
+
     // COIN CHECK: check if the current robot location is a coin location (specifically 0,0)
     for (int i = 0; i < 3; i++) {
         if (robotX2 == coinLocationArray[i].getX() && robotY2 == coinLocationArray[i].getY()) {
@@ -197,9 +194,11 @@ void PlayRobot::playRobot2(Point coinLocationArray[]){
     }
 
 
+    // Traverse every cell in the grid
     for(int x = 0; x <= 9; x++){
         // Move all the way south
         while(!robot2.southEnd()) {
+            previousY2 = robotY2; // setting the previous for later comparison if position has changed
 
             robot2.forward();
             robotY2++;
@@ -220,9 +219,16 @@ void PlayRobot::playRobot2(Point coinLocationArray[]){
                 }
             }
 
+            // added code to switch turns
+            if (robotX2 != previousX2 || robotY2 != previousY2){
+                return;
+            }
+
         }
 
         if(x < 9){
+            previousX2 = robotX2; // setting the previous for later comparison if position has changed
+
             robot2.zigSouth();
             robotX2++;
             numMovesRobot2++;
@@ -242,9 +248,16 @@ void PlayRobot::playRobot2(Point coinLocationArray[]){
                 }
             }
 
+            // added code to switch turns
+            if (robotX2 != previousX2 || robotY2 != previousY2){
+                return;
+            }
+
         }
 
         while(!robot2.northEnd()){
+            previousY2 = robotY2; // setting the previous for later comparison if position has changed
+
             robot2.forward();
             robotY2--;
             numMovesRobot2++;
@@ -263,10 +276,16 @@ void PlayRobot::playRobot2(Point coinLocationArray[]){
 
                 }
             }
+            // added code to switch turns
+            if (robotX2 != previousX2 || robotY2 != previousY2){
+                return;
+            }
 
         }
 
         if(x < 9){
+            previousX2 = robotX2; // setting the previous for later comparison if position has changed
+
             robot2.zagNorth();
             robotX2++;
             numMovesRobot2++;
@@ -285,12 +304,16 @@ void PlayRobot::playRobot2(Point coinLocationArray[]){
 
                 }
             }
+            // added code to switch turns
+            if (robotX2 != previousX2 || robotY2 != previousY2){
+                return;
+            }
         }
 
         if (robot2.eastEnd()) {
             break;
         }
-        return;
+
 
 
     }
@@ -305,18 +328,57 @@ int PlayRobot::getNumCoins(){
 
 
 
-void PlayRobot::playRobots(Point coinLocationArray[]){
+void PlayRobot::playRobots(Point coinLocationArray[]) {
 
     // Initialize robot1
     robot.init();
     robot.print();
 
-
     // Initialize robot2
     robot2.init2();
     robot2.print();
 
+    int currentRobotTurn = 1;
 
+    // Big loop that will hold both robots movements
+    while (numCoins < 3) {
+        if (currentRobotTurn == 1) {
+
+            // ROBOT 1 CODE
+            playRobot1(coinLocationArray);
+            currentRobotTurn = 2;
+
+        } // end of robot 1 movement
+        else if (currentRobotTurn == 2) {
+
+            playRobot2(coinLocationArray);
+            currentRobotTurn = 1;
+
+        } // end of robot 2 movement
+
+
+    } // end of while coins < 3
+
+
+} // end of function
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Scrap
+
+/*
 
     int currentRobotTurn = 1; // start movement with robot1
 
@@ -654,8 +716,4 @@ void PlayRobot::playRobots(Point coinLocationArray[]){
 
 
 
-
-
-
-
-} // end of function
+*/
