@@ -22,6 +22,15 @@ private:
 
     int numCoins = 0;
 
+    // cheking var
+    int previousX;
+    int previousY;
+    int previousX2;
+    int previousY2;
+
+
+
+
 public:
 
     Robot robot;
@@ -34,10 +43,15 @@ public:
 
     PlayRobot();
     void playRobot1(Point coinLocationArray[]);
-
-
-
     void playRobot2(Point coinLocationArray[]);
+    int getNumCoins();
+
+    // maybe
+    void init();
+    void init2();
+
+    // one big
+    void playRobots(Point coinLocationArray[]);;
 };
 
 #endif
