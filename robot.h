@@ -37,6 +37,10 @@ public:
     bool zagNorth();
     bool zigSouth();
 
+    // added
+    int getRobotXCoordinate();
+    int getRobotYCoordinate();
+
 
 };
 

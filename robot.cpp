@@ -2,7 +2,7 @@
 
 // Constructor
 Robot::Robot():
-        currentOrientation(north){
+        currentOrientation(east){
     currentLocation.set(0,0);
 }
 
@@ -172,6 +172,17 @@ void Robot::init2(){
     currentLocation.set(0,0);
     // currentOrientation is an enum data type so it can be any of the directions we listed
     currentOrientation = south;
+}
+
+
+
+// added
+int Robot::getRobotXCoordinate() {
+    return currentLocation.getX();
+}
+
+int Robot::getRobotYCoordinate(){
+    return currentLocation.getY();
 }
 
 
