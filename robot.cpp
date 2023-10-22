@@ -186,3 +186,11 @@ int Robot::getRobotYCoordinate(){
 }
 
 
+
+int Robot::getRobotX2Coordinate() {
+    return currentLocation.getX();
+}
+
+int Robot::getRobotY2Coordinate() {
+    return currentLocation.getY();
+}

@@ -41,6 +41,9 @@ public:
     int getRobotXCoordinate();
     int getRobotYCoordinate();
 
+    int getRobotX2Coordinate();
+    int getRobotY2Coordinate();
+
 
 };
 
