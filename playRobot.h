@@ -51,7 +51,12 @@ public:
     void init2();
 
     // one big
-    void playRobots(Point coinLocationArray[]);;
+    void playRobots(Point coinLocationArray[]);
+    void winner();
+
+    // getters
+    int getNumMovesRobot1();
+    int getNumMovesRobot2();
 };
 
 #endif

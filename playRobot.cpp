@@ -16,6 +16,13 @@ void PlayRobot::playRobot1(Point coinLocationArray[]){
 
 
 
+    // Initialize robot1
+    robot.init();
+    robot.print();
+
+
+
+
     // COIN CHECK: check if the current robot location is a coin location (specifically 0,0)
     for (int i = 0; i < 3; i++) {
         if (robot.getRobotXCoordinate() == coinLocationArray[i].getX() && robot.getRobotYCoordinate() == coinLocationArray[i].getY()) {
@@ -23,8 +30,8 @@ void PlayRobot::playRobot1(Point coinLocationArray[]){
             cout << "Robot 1 found a coin" << endl;
             if (numCoins == 3) {
                 cout << "You have found all 3 coins! Thank you for playing" << endl;
-                cout << "Robot 1 made " << numMovesRobot1 << " moves" << endl;
-                exit(0);
+                cout << "Robot 1 made " << numMovesRobot1 << " moves" << endl << endl;
+                return;
             }
 
         }
@@ -37,13 +44,9 @@ void PlayRobot::playRobot1(Point coinLocationArray[]){
         // Move all the way East
         while (!robot.eastEnd()) {
 
-            previousX = robot.getRobotXCoordinate(); // setting the previous for later comparison if position has changed
-
             robot.forward();
-            //robotX++; // update X location
             numMovesRobot1++;
             robot.print();
-            cout << robot.getRobotXCoordinate() << ", " << robot.getRobotYCoordinate() << endl;
 
 
             // COIN CHECK: check if the current robot location is a coin location
@@ -53,15 +56,10 @@ void PlayRobot::playRobot1(Point coinLocationArray[]){
                     cout << "Robot 1 found a coin" << endl;
                     if (numCoins == 3) {
                         cout << "You have found all 3 coins! Thank you for playing" << endl;
-                        cout << "Robot 1 made " << numMovesRobot1 << " moves" << endl;
-                        exit(0);
+                        cout << "Robot 1 made " << numMovesRobot1 << " moves" << endl << endl;
+                        return;
                     }
                 }
-            }
-
-            // added code to switch turns
-            if (robot.getRobotXCoordinate() != previousX || robot.getRobotYCoordinate() != previousY){
-                return;
             }
 
         }
@@ -69,13 +67,10 @@ void PlayRobot::playRobot1(Point coinLocationArray[]){
         // Change orientation to West once you've reached the East border. This will zag since were at the east end.
         // (y<9) Prevents from doing zag once you're in the last row
         if (y < 9 && robot.eastEnd()) {
-            previousY = robot.getRobotYCoordinate(); // setting the previous for later comparison if position has changed
 
             robot.zag();
-            //robotY++; // update Y location
             numMovesRobot1++;
             robot.print();
-            cout << robot.getRobotXCoordinate() << ", " << robot.getRobotYCoordinate() << endl;
 
 
             // COIN CHECK: check if the current robot location is a coin location
@@ -85,15 +80,11 @@ void PlayRobot::playRobot1(Point coinLocationArray[]){
                     cout << "Robot 1 found a coin" << endl;
                     if (numCoins == 3) {
                         cout << "You have found all 3 coins! Thank you for playing" << endl;
-                        cout << "Robot 1 made " << numMovesRobot1 << " moves" << endl;
-                        exit(0);
+                        cout << "Robot 1 made " << numMovesRobot1 << " moves" << endl << endl;
+                        return;
                     }
 
                 }
-            }
-            // added code to switch turns
-            if (robot.getRobotXCoordinate() != previousX || robot.getRobotYCoordinate() != previousY){
-                return;
             }
         }
 
@@ -101,14 +92,9 @@ void PlayRobot::playRobot1(Point coinLocationArray[]){
         // Move all the way West
         while (!robot.westEnd()) {
 
-            previousX = robot.getRobotXCoordinate(); // setting the previous for later comparison if position has changed
-
             robot.forward();
-            //robotX--; // update X location
             numMovesRobot1++;
             robot.print();
-            cout << robot.getRobotXCoordinate() << ", " << robot.getRobotYCoordinate() << endl;
-
 
             // COIN CHECK: check if the current robot location is a coin location
             for (int i = 0; i < 3; i++) {
@@ -117,15 +103,11 @@ void PlayRobot::playRobot1(Point coinLocationArray[]){
                     cout << "Robot 1 found a coin" << endl;
                     if (numCoins == 3) {
                         cout << "You have found all 3 coins! Thank you for playing" << endl;
-                        cout << "Robot 1 made " << numMovesRobot1 << " moves" << endl;
-                        exit(0);
+                        cout << "Robot 1 made " << numMovesRobot1 << " moves" << endl << endl;
+                        return;
                     }
 
                 }
-            }
-            // added code to switch turns
-            if (robot.getRobotXCoordinate() != previousX || robot.getRobotYCoordinate() != previousY){
-                return;
             }
         }
 
@@ -133,13 +115,10 @@ void PlayRobot::playRobot1(Point coinLocationArray[]){
         // Change orientation to East once you've reached the West border. This will zig since were at the west end.
         // (y<9) Prevents from doing zig once you're in the last row
         if (y < 9 && robot.westEnd()) {
-            previousY = robot.getRobotYCoordinate(); // setting the previous for later comparison if position has changed
 
             robot.zig();
-            //robotY++; // update Y location
             numMovesRobot1++;
             robot.print();
-            cout << robot.getRobotXCoordinate() << ", " << robot.getRobotYCoordinate() << endl;
 
 
             // COIN CHECK: check if the current robot location is a coin location
@@ -149,15 +128,11 @@ void PlayRobot::playRobot1(Point coinLocationArray[]){
                     cout << "Robot 1 found a coin" << endl;
                     if (numCoins == 3) {
                         cout << "You have found all 3 coins! Thank you for playing" << endl;
-                        cout << "Robot 1 made " << numMovesRobot1 << " moves" << endl;
-                        exit(0);
+                        cout << "Robot 1 made " << numMovesRobot1 << " moves" << endl << endl;
+                        return;
                     }
 
                 }
-            }
-            // added code to switch turns
-            if (robot.getRobotXCoordinate() != previousX || robot.getRobotYCoordinate() != previousY){
-                return;
             }
         }
 
@@ -174,6 +149,11 @@ void PlayRobot::playRobot1(Point coinLocationArray[]){
 void PlayRobot::playRobot2(Point coinLocationArray[]){
 
 
+    // Initialize robot2
+    robot2.init2();
+    robot2.print();
+
+
     // ROBOT 2 CODE
 
     // COIN CHECK: check if the current robot location is a coin location (specifically 0,0)
@@ -183,8 +163,8 @@ void PlayRobot::playRobot2(Point coinLocationArray[]){
             cout << "Robot 2 found a coin" << endl;
             if (numCoins == 3) {
                 cout << "You have found all 3 coins! Thank you for playing" << endl;
-                cout << "Robot 2 made " << numMovesRobot2 << " moves" << endl;
-                exit(0);
+                cout << "Robot 2 made " << numMovesRobot2 << " moves" << endl << endl;
+                return;
             }
 
         }
@@ -195,13 +175,10 @@ void PlayRobot::playRobot2(Point coinLocationArray[]){
     for(int x = 0; x <= 9; x++){
         // Move all the way south
         while(!robot2.southEnd()) {
-            previousY2 = robot2.getRobotY2Coordinate(); // setting the previous for later comparison if position has changed
 
             robot2.forward();
-            //robotY2++;
             numMovesRobot2++;
             robot2.print();
-            cout << robot2.getRobotX2Coordinate() << ", " << robot2.getRobotY2Coordinate() << endl;
 
             // COIN CHECK: check if the current robot location is a coin location
             for (int i = 0; i < 3; i++) {
@@ -210,28 +187,20 @@ void PlayRobot::playRobot2(Point coinLocationArray[]){
                     cout << "Robot 2 found a coin" << endl;
                     if (numCoins == 3) {
                         cout << "You have found all 3 coins! Thank you for playing" << endl;
-                        cout << "Robot 2 made " << numMovesRobot2 << " moves" << endl;
-                        exit(0);
+                        cout << "Robot 2 made " << numMovesRobot2 << " moves" << endl << endl;
+                        return;
                     }
 
                 }
-            }
-
-            // added code to switch turns
-            if (robot2.getRobotX2Coordinate() != previousX2 || robot2.getRobotY2Coordinate() != previousY2){
-                return;
             }
 
         }
 
         if(x < 9 && robot.southEnd()){
-            previousX2 = robot2.getRobotX2Coordinate(); // setting the previous for later comparison if position has changed
 
             robot2.zigSouth();
-            //robotX2++;
             numMovesRobot2++;
             robot2.print();
-            cout << robot2.getRobotX2Coordinate() << ", " << robot2.getRobotY2Coordinate() << endl;
 
             // COIN CHECK: check if the current robot location is a coin location
             for (int i = 0; i < 3; i++) {
@@ -240,28 +209,21 @@ void PlayRobot::playRobot2(Point coinLocationArray[]){
                     cout << "Robot 2 found a coin" << endl;
                     if (numCoins == 3) {
                         cout << "You have found all 3 coins! Thank you for playing" << endl;
-                        cout << "Robot 2 made " << numMovesRobot2 << " moves" << endl;
-                        exit(0);
+                        cout << "Robot 2 made " << numMovesRobot2 << " moves" << endl << endl;
+                        return;
                     }
 
                 }
             }
 
-            // added code to switch turns
-            if (robot2.getRobotX2Coordinate() != previousX2 || robot2.getRobotY2Coordinate() != previousY2){
-                return;
-            }
 
         }
 
         while(!robot2.northEnd()){
-            previousY2 = robot2.getRobotY2Coordinate(); // setting the previous for later comparison if position has changed
 
             robot2.forward();
-            //robotY2--;
             numMovesRobot2++;
             robot2.print();
-            cout << robot2.getRobotX2Coordinate() << ", " << robot2.getRobotY2Coordinate() << endl;
 
             // COIN CHECK: check if the current robot location is a coin location
             for (int i = 0; i < 3; i++) {
@@ -270,27 +232,20 @@ void PlayRobot::playRobot2(Point coinLocationArray[]){
                     cout << "Robot 2 found a coin" << endl;
                     if (numCoins == 3) {
                         cout << "You have found all 3 coins! Thank you for playing" << endl;
-                        cout << "Robot 2 made " << numMovesRobot2 << " moves" << endl;
-                        exit(0);
+                        cout << "Robot 2 made " << numMovesRobot2 << " moves" << endl << endl;
+                        return;
                     }
 
                 }
-            }
-            // added code to switch turns
-            if (robot2.getRobotX2Coordinate() != previousX2 || robot2.getRobotY2Coordinate() != previousY2){
-                return;
             }
 
         }
 
         if(x < 9 && robot.northEnd()){
-            previousX2 = robot2.getRobotX2Coordinate(); // setting the previous for later comparison if position has changed
 
             robot2.zagNorth();
-            //robotX2++;
             numMovesRobot2++;
             robot2.print();
-            cout << robot2.getRobotX2Coordinate() << ", " << robot2.getRobotY2Coordinate() << endl;
 
             // COIN CHECK: check if the current robot location is a coin location
             for (int i = 0; i < 3; i++) {
@@ -299,15 +254,11 @@ void PlayRobot::playRobot2(Point coinLocationArray[]){
                     cout << "Robot 2 found a coin" << endl;
                     if (numCoins == 3) {
                         cout << "You have found all 3 coins! Thank you for playing" << endl;
-                        cout << "Robot 2 made " << numMovesRobot2 << " moves" << endl;
-                        exit(0);
+                        cout << "Robot 2 made " << numMovesRobot2 << " moves" << endl << endl;
+                        return;
                     }
 
                 }
-            }
-            // added code to switch turns
-            if (robot2.getRobotX2Coordinate() != previousX2 || robot2.getRobotY2Coordinate() != previousY2){
-                return;
             }
         }
 
@@ -331,46 +282,49 @@ int PlayRobot::getNumCoins(){
 
 void PlayRobot::playRobots(Point coinLocationArray[]) {
 
-    // Initialize robot1
-    robot.init();
-    robot.print();
 
-    // Initialize robot2
-    robot2.init2();
-    robot2.print();
-
-    int currentRobotTurn = 1;
-
-    // Big loop that will hold both robots movements
-    while (numCoins < 3) {
-        if (currentRobotTurn == 1) {
-
-            // ROBOT 1 CODE
-            playRobot1(coinLocationArray);
-            currentRobotTurn = 2;
-
-        } // end of robot 1 movement*/
-        else if (currentRobotTurn == 2) {
-
-            playRobot2(coinLocationArray);
-            currentRobotTurn = 1;
-
-        } // end of robot 2 movement
+    PlayRobot playRobot1;
+    playRobot1.playRobot1(coinLocationArray);
 
 
-    } // end of while coins < 3
+    PlayRobot playRobot2;
+    playRobot2.playRobot2(coinLocationArray);
 
 
-} // end of function
+    if (playRobot1.getNumMovesRobot1() > playRobot2.getNumMovesRobot2()){
+        cout << "Robot 2 collected the coins in less moves. Robot 2 wins" << endl;
+    }
+    else if (playRobot2.getNumMovesRobot2() > playRobot1.getNumMovesRobot1()){
+        cout << "Robot 1 collected the coins in less moves. Robot 1 wins" << endl;
+    }
+    else{
+        cout << "Both robots took the same amount of moves. TIE!" << endl;
+    }
+
+
+}
 
 
 
 
+/*
+void PlayRobot::winner(){
+    if (numMovesRobot1 > numMovesRobot2){
+        cout << "Robot 1 collected the coins in less moves. Robot 1 wins" << endl;
+    }
+    else{
+        cout << "Robot 2 collected the coins in less moves. Robot 2 wins" << endl;
+    }
 
+}
 
+*/
 
+int PlayRobot::getNumMovesRobot1(){
+    return numMovesRobot1;
+}
 
-
-
-
+int PlayRobot::getNumMovesRobot2(){
+    return numMovesRobot2;
+}
 

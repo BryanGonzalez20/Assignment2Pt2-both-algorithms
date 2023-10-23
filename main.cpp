@@ -39,30 +39,13 @@ int main() {
     cout << endl;
 
 
-    /*
+
 
     // PLAYROBOT CODE
-    PlayRobot robot1;
-    PlayRobot robot2;
 
-
-
-    while (robot1.getNumCoins() < 3 && robot2.getNumCoins() < 3) {
-        // Make one move for robot1
-        robot1.playRobot1(coinLocationArray);
-
-
-        // Make one move for robot2
-        robot2.playRobot2(coinLocationArray);
-
-
-    }
-
-     */
 
     PlayRobot playRobot;
     playRobot.playRobots(coinLocationArray);
-
 
     return 0;
 }
